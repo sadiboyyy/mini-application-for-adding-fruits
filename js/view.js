@@ -22,32 +22,28 @@ function generateLiFruit(fruit) {
 function renderUlFruits(fruits) {
   const elUl = document.querySelector('ul')
   elUl.innerHTML = ''
-  let i = 0
-  while (i < fruits.length) {
-    const elLi = generateLiFruit(fruits[i])
+  for (const fruit of fruits) {
+    const elUl = document.querySelector('ul')
+    const elLi = generateLiFruit(fruit)
     elUl.appendChild(elLi)
-    i++
-  
   }
 }
-
 
 function onClickButtonRemove(e) {
   const elButton = e.target
   const elLi = elButton.closest('li')
   const elInput = elLi.querySelector('input')
   const text = elInput.value
-  localStorage.setItem('text',text)
+  localStorage.setItem('text', text)
   handleRemoveFruit(text)
   console.log(text)
-  
 }
 
 function onChangeInput(e) {
   handleEditNote(e.target.value, e.target.oldValue)
   e.target.oldValue = e.target.value
   const fruitsOldValue = e.target.oldValue
-  localStorage.setItem('fruitsOldValue',fruitsOldValue)
+  localStorage.setItem('fruitsOldValue', fruitsOldValue)
 }
 
 function onClickButtonAdd() {
@@ -56,7 +52,7 @@ function onClickButtonAdd() {
   elInput.value = ''
   const fruits = elInput.value
   elInput.focus()
-  localStorage.setItem('fruits',fruits )
+  localStorage.setItem('fruits', fruits)
 }
 
 function onClickButtonRemoveList(e) {
@@ -65,5 +61,3 @@ function onClickButtonRemoveList(e) {
   localStorage.setItem('removeFruitList', removeFruitList)
   console.log(removeFruitList)
 }
-
-
